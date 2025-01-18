@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="Move_Data" load_steps=4 format=3 uid="uid://cfm66pymnh7ja"]
+
+[ext_resource type="Script" path="res://Move_Data.gd" id="1_1p8jm"]
+[ext_resource type="AudioStream" uid="uid://d3us11dfaeocv" path="res://Audio/qubodupPunch01.ogg" id="1_3a3j0"]
+[ext_resource type="AudioStream" uid="uid://bd84c6q4p576a" path="res://Audio/Smash.mp3" id="3_ebskp"]
+
+[resource]
+script = ExtResource("1_1p8jm")
+startup = 15
+active = 9
+end = 21
+attackName = "Smash"
+collider = 0
+damage = 12
+knockback = 12.0
+sound = ExtResource("3_ebskp")
+impact = ExtResource("1_3a3j0")

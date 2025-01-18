@@ -1,0 +1,89 @@
+[gd_scene load_steps=14 format=3 uid="uid://vafjnrbk4yb5"]
+
+[ext_resource type="Shader" uid="uid://4vm8u8ine8so" path="res://Shader/FireBall.tres" id="1_nkgst"]
+[ext_resource type="Script" path="res://Projectile.gd" id="1_tm8eg"]
+[ext_resource type="Texture2D" uid="uid://c1pp0lvqpk2k0" path="res://Shader/Voronoi01.png" id="2_fqpjh"]
+[ext_resource type="Texture2D" uid="uid://cqfnwgxnnbnul" path="res://Shader/Flame02.png" id="4_anun6"]
+[ext_resource type="AudioStream" uid="uid://bx8cc7xkanjxm" path="res://Audio/foom_0.wav" id="5_v2do7"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_l61gt"]
+diffuse_mode = 3
+specular_mode = 1
+albedo_color = Color(4.01176, 1.07059, 0.6, 1)
+disable_receive_shadows = true
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_sdd5n"]
+render_priority = 0
+shader = ExtResource("1_nkgst")
+shader_parameter/Scale = Vector2(0.2, 0.2)
+shader_parameter/Move = Vector2(0, 0.5)
+shader_parameter/MainTex = ExtResource("4_anun6")
+shader_parameter/DisolveTex = ExtResource("2_fqpjh")
+
+[sub_resource type="Curve" id="Curve_gpe3j"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.181373, 0.989011), 0.616483, 0.616483, 0, 0, Vector2(0.936275, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_n73a1"]
+curve = SubResource("Curve_gpe3j")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_x8m2s"]
+emission_shape = 1
+emission_sphere_radius = 0.2
+inherit_velocity_ratio = 0.5
+gravity = Vector3(0, 5, 0)
+damping_min = 0.75
+damping_max = 1.5
+scale_min = 0.5
+scale_curve = SubResource("CurveTexture_n73a1")
+color = Color(4, 1.25, 0.6, 1)
+
+[sub_resource type="QuadMesh" id="QuadMesh_88wuk"]
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_havr7"]
+properties/0/path = NodePath(".:position")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_2krcx"]
+radius = 0.220945
+
+[node name="FireBall" type="Node3D"]
+script = ExtResource("1_tm8eg")
+speed = 7.0
+damage = 11
+knock = 5.0
+
+[node name="Particles" type="Node3D" parent="."]
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="Particles"]
+transform = Transform3D(0.332802, 0, 0, 0, 0.332802, 0, 0, 0, 0.332802, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_l61gt")
+
+[node name="Base2" type="GPUParticles3D" parent="Particles"]
+material_override = SubResource("ShaderMaterial_sdd5n")
+amount = 14
+lifetime = 0.7
+process_material = SubResource("ParticleProcessMaterial_x8m2s")
+draw_pass_1 = SubResource("QuadMesh_88wuk")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 1.2
+autostart = true
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_havr7")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("5_v2do7")
+volume_db = -8.889
+autoplay = true
+
+[node name="Area3D" type="Area3D" parent="."]
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("SphereShape3D_2krcx")
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

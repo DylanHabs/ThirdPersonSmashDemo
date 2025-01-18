@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="InputQ" load_steps=2 format=3 uid="uid://cx8502xto1h2q"]
+
+[ext_resource type="Script" path="res://InputQ.gd" id="1_w3yh5"]
+
+[resource]
+script = ExtResource("1_w3yh5")
+age = 0
+type = ""

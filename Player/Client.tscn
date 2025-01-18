@@ -1,0 +1,12 @@
+[gd_scene load_steps=4 format=3 uid="uid://glwrk8w5fd2a"]
+
+[ext_resource type="Script" path="res://Player/Client.gd" id="1_4maoa"]
+[ext_resource type="PackedScene" uid="uid://dw7rbq4dqp4tx" path="res://PlayerScene.tscn" id="1_nnadt"]
+[ext_resource type="PackedScene" uid="uid://b10nr4o8lixir" path="res://Player/Spectate.tscn" id="3_yfvfv"]
+
+[node name="Client" type="Node3D"]
+script = ExtResource("1_4maoa")
+
+[node name="Player" parent="." instance=ExtResource("1_nnadt")]
+
+[node name="Spectate" parent="." instance=ExtResource("3_yfvfv")]

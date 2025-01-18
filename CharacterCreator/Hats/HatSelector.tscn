@@ -1,0 +1,109 @@
+[gd_scene load_steps=16 format=3 uid="uid://bclis6kdsyvlw"]
+
+[ext_resource type="Script" path="res://CharacterCreator/Hats/HatSelector.gd" id="1_6o6md"]
+[ext_resource type="PackedScene" uid="uid://b70up5hfua2xb" path="res://CharacterCreator/Hats/MarioHat.fbx" id="2_4lkj2"]
+[ext_resource type="Texture2D" uid="uid://0vfameyyrs54" path="res://ColorPall.png" id="3_itdfy"]
+[ext_resource type="PackedScene" uid="uid://6agqkysb0n0f" path="res://CharacterCreator/Hats/TallHat.fbx" id="4_io8ch"]
+[ext_resource type="PackedScene" uid="uid://c7y8kp4ujnyk2" path="res://CharacterCreator/Hats/Afro.fbx" id="5_68imn"]
+[ext_resource type="PackedScene" uid="uid://daot5dqtti108" path="res://CharacterCreator/Hats/Hair1.fbx" id="5_fsld7"]
+[ext_resource type="PackedScene" uid="uid://bnhrhh4usrcrr" path="res://CharacterCreator/Hats/Goggles.fbx" id="7_3ip40"]
+[ext_resource type="PackedScene" uid="uid://bvaak2gw6xhen" path="res://CharacterCreator/Hats/Hair2.fbx" id="7_dj38q"]
+[ext_resource type="PackedScene" uid="uid://dbublrgxsm5fq" path="res://CharacterCreator/Hats/Hat.fbx" id="9_kuoq2"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3asls"]
+diffuse_mode = 3
+specular_mode = 1
+albedo_texture = ExtResource("3_itdfy")
+roughness = 0.3
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_d4bxd"]
+diffuse_mode = 3
+specular_mode = 1
+albedo_color = Color(1, 1, 0.0980392, 1)
+roughness = 0.3
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0hif1"]
+diffuse_mode = 3
+specular_mode = 1
+albedo_color = Color(0.0431373, 0.027451, 0.0156863, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_klfww"]
+diffuse_mode = 3
+specular_mode = 1
+albedo_color = Color(0.0784314, 0.0784314, 0.0784314, 1)
+roughness = 0.3
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8ckfw"]
+cull_mode = 2
+diffuse_mode = 3
+specular_mode = 1
+albedo_color = Color(0.321569, 0.243137, 0.156863, 1)
+roughness = 0.3
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0ouxl"]
+diffuse_mode = 3
+specular_mode = 1
+albedo_color = Color(0.454902, 0.560784, 0.564706, 1)
+roughness = 0.3
+
+[node name="HatSelector" type="Node3D"]
+script = ExtResource("1_6o6md")
+
+[node name="MarioHat" parent="." instance=ExtResource("2_4lkj2")]
+visible = false
+
+[node name="Body_003" parent="MarioHat/RootNode" index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_3asls")
+
+[node name="YellowHat" parent="." instance=ExtResource("4_io8ch")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.847094, 0)
+visible = false
+
+[node name="Cylinder" parent="YellowHat/RootNode" index="0"]
+transform = Transform3D(100, 0, 0, 0, -1.19209e-05, 100, 0, -100, -1.19209e-05, 0, 0.0964961, 0)
+material_override = SubResource("StandardMaterial3D_d4bxd")
+
+[node name="Hair1" parent="." instance=ExtResource("5_fsld7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.104978, 0)
+visible = false
+
+[node name="Cube" parent="Hair1/RootNode" index="0"]
+transform = Transform3D(100, 0, 0, 0, -1.19209e-05, 100, 0, -100, -1.19209e-05, 0, 1.66634, 0)
+surface_material_override/0 = SubResource("StandardMaterial3D_0hif1")
+
+[node name="Afro" parent="." instance=ExtResource("5_68imn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.515769, 0)
+visible = false
+
+[node name="Cube" parent="Afro/RootNode" index="0"]
+transform = Transform3D(100, 0, 0, 0, -1.19209e-05, 100, 0, -100, -1.19209e-05, 0.00450706, 0.87628, 0.0129843)
+surface_material_override/0 = SubResource("StandardMaterial3D_klfww")
+
+[node name="Minion" parent="." instance=ExtResource("7_3ip40")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.39106, 0)
+visible = false
+
+[node name="Cylinder" parent="Minion/RootNode" index="0"]
+transform = Transform3D(100, 0, 0, 0, 100, -4.37114e-06, 0, 4.37114e-06, 100, 0, 1.49216, 0)
+
+[node name="Hair2" parent="." instance=ExtResource("7_dj38q")]
+visible = false
+
+[node name="Body_002" parent="Hair2/RootNode" index="0"]
+transform = Transform3D(112.252, -4.01446e-07, 1.33815e-07, -1.33815e-07, -2.67631e-05, 112.252, -4.01446e-07, -112.252, -2.67631e-05, -0.0757721, -3.94345, -0.144596)
+surface_material_override/0 = SubResource("StandardMaterial3D_8ckfw")
+
+[node name="Hat" parent="." instance=ExtResource("9_kuoq2")]
+visible = false
+
+[node name="Cylinder" parent="Hat/RootNode" index="0"]
+transform = Transform3D(100, 0, 0, 0, -13.99, 99.0166, 0, -99.0166, -13.99, 0, 1.00573, 0)
+material_override = SubResource("StandardMaterial3D_0ouxl")
+
+[editable path="MarioHat"]
+[editable path="YellowHat"]
+[editable path="Hair1"]
+[editable path="Afro"]
+[editable path="Minion"]
+[editable path="Hair2"]
+[editable path="Hat"]

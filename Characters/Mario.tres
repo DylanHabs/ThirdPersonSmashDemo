@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="Character" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://CharacterCreator/Character.gd" id="1_j8a8j"]
+
+[resource]
+script = ExtResource("1_j8a8j")
+size = 0.65
+jaw = 0.2
+shoulder = 0.25
+arms = 0.05
+butt = 0.25
+belly = 0.4
+legs = 0.0
+chest = 0.4
+skin = Color(0.968627, 0.882353, 0.74902, 1)
+shirt = Color(0.764706, 0.133333, 0.109804, 1)
+gloves = Color(0.972549, 0.968627, 0.964706, 1)
+pants = Color(0.207843, 0.313726, 0.6, 1)
+boots = Color(0.0705882, 0.0431373, 0.0117647, 1)
+hatIndex = 0.0
+faceImg = {}

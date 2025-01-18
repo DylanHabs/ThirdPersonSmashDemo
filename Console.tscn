@@ -1,0 +1,36 @@
+[gd_scene load_steps=2 format=3 uid="uid://caioeaq0hu2vf"]
+
+[ext_resource type="Script" path="res://Console.gd" id="1_bbctq"]
+
+[node name="Console" type="PopupPanel"]
+initial_position = 2
+size = Vector2i(635, 375)
+visible = true
+unresizable = false
+borderless = false
+script = ExtResource("1_bbctq")
+
+[node name="Panel" type="Panel" parent="."]
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 631.0
+offset_bottom = 371.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="VSplitContainer" type="VSplitContainer" parent="Panel"]
+layout_mode = 0
+offset_right = 627.0
+offset_bottom = 367.0
+
+[node name="Label" type="Label" parent="Panel/VSplitContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+vertical_alignment = 2
+
+[node name="LineEdit" type="LineEdit" parent="Panel/VSplitContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+placeholder_text = "Command"
+
+[connection signal="text_submitted" from="Panel/VSplitContainer/LineEdit" to="." method="_on_line_edit_text_submitted"]

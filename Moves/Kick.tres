@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="Move_Data" load_steps=4 format=3 uid="uid://cl6pf7qrsebw"]
+
+[ext_resource type="AudioStream" uid="uid://d3us11dfaeocv" path="res://Audio/qubodupPunch01.ogg" id="1_is540"]
+[ext_resource type="Script" path="res://Move_Data.gd" id="1_l2rg4"]
+[ext_resource type="AudioStream" uid="uid://ccsvelneng87o" path="res://Audio/Jab.mp3" id="2_vrs24"]
+
+[resource]
+script = ExtResource("1_l2rg4")
+startup = 5
+active = 6
+end = 14
+attackName = "Kick"
+collider = 1
+damage = 9
+knockback = 4.0
+sound = ExtResource("2_vrs24")
+impact = ExtResource("1_is540")
+proj = false

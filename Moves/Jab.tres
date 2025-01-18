@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="Move_Data" load_steps=4 format=3 uid="uid://udk4veiusjnd"]
+
+[ext_resource type="AudioStream" uid="uid://bxvydmvdinioq" path="res://Audio/qubodupPunch02.ogg" id="1_13tjd"]
+[ext_resource type="Script" path="res://Move_Data.gd" id="1_dawoe"]
+[ext_resource type="AudioStream" uid="uid://ccsvelneng87o" path="res://Audio/Jab.mp3" id="2_087k6"]
+
+[resource]
+script = ExtResource("1_dawoe")
+startup = 3
+active = 3
+end = 13
+attackName = "Jab"
+collider = 0
+damage = 3
+knockback = 0.0
+sound = ExtResource("2_087k6")
+impact = ExtResource("1_13tjd")
+proj = false
